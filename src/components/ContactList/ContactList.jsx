@@ -1,13 +1,14 @@
+import './ContactList.css';
 
-export function ContactList({ contacts }) {
+export function ContactList({ contacts, onDeleteContact }) {
     return (
         <>
-  <ul>
+  <ul className='ContactList'>
     {contacts.map(({id, name, number}) => (
-      <li key={id}>
-        <p>{name}</p>
-            <p>{number}</p>
-            <button>Delete</button>
+      <li key={id} className='ContactList__item'>
+        <p className='ContactList__text'>{name}</p>
+            <p className='ContactList__text'>{number}</p>
+            <button onClick = {() => onDeleteContact(id)}>Delete</button>
       </li>
     ))}
         </ul></>);
