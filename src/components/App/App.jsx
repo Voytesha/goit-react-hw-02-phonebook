@@ -32,14 +32,13 @@ export class App extends Component {
     });
   };
 
-  handleInputName = event => {
-    console.log(event.currentTarget.value);
 
-    this.setState({ name: event.currentTarget.value });
-  };
+  handleChange = event => {
+    const {name, value} = event.currentTarget;
 
-  handleInputTel = event => {
-    this.setState ({number: event.currentTarget.value});
+    this.state({
+        [name]: value,
+    })
   }
 
   render() {
@@ -57,7 +56,7 @@ export class App extends Component {
               title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
               required
               value={this.state.name}
-              onChange={this.handleInputName}
+              onChange={this.handleChange}
             />
           </label>
           <label htmlFor="">
@@ -69,10 +68,11 @@ export class App extends Component {
               title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
               required
               value={this.state.number}
-              onChange={this.handleInputTel}
+              onChange={this.handleChange}
             />
           </label>
         </form>
+        <button type='button'>Add contact</button>
 
         <h2>Contacts</h2>
 
